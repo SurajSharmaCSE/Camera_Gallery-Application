@@ -1,5 +1,5 @@
 # Camera_Gallery-Application
-'''
+```
 Camera + Gallery Application
     Heavy Browser API Usage 
         - Media Stream
@@ -11,4 +11,4 @@ Camera + Gallery Application
         - Image Capturing(with Filters)
         - Video Recording
         - Gallery (Store in Browser)
-'''
+```
