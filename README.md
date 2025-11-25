@@ -3,7 +3,7 @@
 Camera + Gallery Application
     Heavy Browser API Usage 
         - Media Stream
-        - Nedia Recorder
+        - Media Recorder
         - Media Device
         - Indexed DB (client side Storage)
         - Canvas
@@ -11,4 +11,7 @@ Camera + Gallery Application
         - Image Capturing(with Filters)
         - Video Recording
         - Gallery (Store in Browser)
+
+    Part1
+
 ```
