@@ -6,6 +6,7 @@ let captureBtn = document.querySelector(".capture-btn");
 let recorder;
 let recordFlag = false;
 let chunks = [];
+let transparentColor = "transparent";
 
 let constraints = {
     video: true,
@@ -56,6 +57,26 @@ recordBtnCont.addEventListener("click",(e)=>{
     }
 })
 
+captureBtnCont.addEventListener("click",(e)=>{
+    let canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    let tool = canvas.getContext("2d");
+    tool.drawImage(video, 0, 0,canvas.width,canvas.height);
+
+    //filtering
+    tool.fillStyle = transparentColor;
+    tool.fillRect(0,0,canvas.width,canvas.height)
+
+    let imageURL = canvas.toDataURL();
+
+    let a = document.createElement("a");
+    a.href = imageURL;
+    a.download = "image.jpg";
+    a.click();
+})
+
 let timerID;
 let counter = 0 // represents total seconds
 let timer = document.querySelector(".timer");
@@ -92,3 +113,17 @@ function stopTimer(){
     timer.innerText = "00:00:00";
      timer.style.display = "none";
 }
+
+//filter logic
+let filterLayer = document.querySelector(".filter-layer")
+let allFilters = document.querySelectorAll(".filter");
+
+allFilters.forEach((filterElem) =>{
+
+    filterElem.addEventListener("click",(e)=>{
+        //Get Style
+        transparentColor = getComputedStyle(filterElem).getPropertyValue("background-color");
+        filterLayer.style.backgroundColor = transparentColor;
+
+    })
+})
